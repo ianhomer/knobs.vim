@@ -1,0 +1,12 @@
+*knobs.txt*  Vim with knobs
+
+INTRODUCTION                                    *knobs*
+
+Conditionally configure your vim configuration, allowing you to switch on and
+off features. This can be done by configuration levels. This can provide a
+minimal fast configurations and more expansive experimental configurations.
+
+COMMANDS                                        *knobs-commands*
+
+:KnobLevel                 Output current knob level
+
