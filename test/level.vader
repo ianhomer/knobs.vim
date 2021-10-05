@@ -2,8 +2,6 @@ Given:
   Hello
 
 Do:
-#  $a3
-#  $a"=knobs#Level()\<C-M>
   $a\<C-R>=knobs#Level()\<C-M>\<ESC>
 
 Expect:

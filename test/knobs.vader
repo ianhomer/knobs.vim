@@ -1,0 +1,15 @@
+Given:
+  Knobs
+
+Do:
+  $o\<C-R>=knobs#runtime#Knobs()\<C-M>end\<ESC>
+
+Expect:
+  Knobs
+  k1a
+  k1b
+  k2a
+  k2b
+  k3a
+  k3b
+  end

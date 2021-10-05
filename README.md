@@ -1,6 +1,12 @@
 # knobs.vim
 
-Conditional Vim configurations with knobs.
+Feature flags and conditional configurations. Vim with knobs.
+
+Why?
+
+- Different configuration for different environments.
+- Toggle on and off experimental plugins.
+- Spin up different configuration levels, light vs full.
 
 ## Installation
 
