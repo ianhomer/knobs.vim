@@ -8,5 +8,11 @@ minimal fast configurations and more expansive experimental configurations.
 
 COMMANDS                                        *knobs-commands*
 
-:KnobLevel                 Output current knob level
+:knobs                      Output knobs enabled
+:KnobsLevel                 Output current knob level
 
+ABOUT                                           *knobs-about*
+
+Get the latest version or report a bug at§:
+
+https://github.com/ianhomer/knobs.vim
