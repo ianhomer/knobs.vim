@@ -16,5 +16,8 @@ let g:knobs_levels = {
   \ }
 
 if knobs#("k1a")
-  echo "Knob k1a is enabled"
+  IfKnob 'k1a' noremap <space>a ik1a<ESC>
 end
+
+IfKnob 'k1a' noremap <space>b ik1a<ESC>
+

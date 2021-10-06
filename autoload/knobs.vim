@@ -39,6 +39,8 @@ function! knobs#Init()
     let g:knobs = {}
   endif
 
+  call s:DefineCommands()
+
   let g:knobs_level = exists('$VIM_KNOB' ) ?
     \ $VIM_KNOB : 
     \ exists('g:knobs_default_level') ? g:knobs_default_level : 0
@@ -46,6 +48,16 @@ function! knobs#Init()
   " Do full initialisation if config level greater than zero
   if knobs#At(1)
     call knobs#core#Init()
+  endif
+endfunction
+
+"
+" Commands and functions used in vimrc. Further commands used after spin up
+" should be defined in plugin/knobs.vim.
+"
+function! s:DefineCommands()
+  if !exists("*IfKnob")
+    command! -nargs=+ -bar IfKnob call knobs#core#RunIf(<f-args>)
   endif
 endfunction
 

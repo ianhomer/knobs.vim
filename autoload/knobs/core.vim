@@ -23,3 +23,11 @@ function! knobs#core#InitLevels()
     endif
   endfor
 endfunction
+
+" Function useful for plug package
+function! knobs#core#RunIf(knob, ...)
+  if knobs#(trim(a:knob,"'"))
+    execute join(a:000)
+  endif
+endfunction
+

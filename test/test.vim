@@ -14,3 +14,10 @@ let g:knobs_levels = {
   \   "k5a":5,
   \   "k5b":5
   \ }
+
+if knobs#("k1a")
+  IfKnob 'k1a' noremap <space>a ak1a<ESC>
+end
+
+IfKnob 'k1b' noremap <space>b ak1b<ESC>
+
