@@ -38,12 +38,12 @@ IfKnob 'eunuch' Plug 'tpope/vim-eunuch'
 call plug#end()
 ```
 
-Start Vim at different configuration levels. For, with the `.vimrc` example
+Start Vim at different configuration levels. For example, with the `.vimrc`
 above,
 
     VIM_KNOBS=5 vim
 
-would load `vim-eunuch` plugin, however (with knob level of 3 as default),
+would load `vim-eunuch` plugin, however (with default knob level of 3),
 
     vim
 
