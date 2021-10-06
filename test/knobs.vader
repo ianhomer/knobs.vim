@@ -3,6 +3,8 @@ Given:
 
 Do:
   $o\<C-R>=knobs#runtime#Knobs()\<C-M>end\<ESC>
+  ok3a\<C-R>=knobs#("k3a")\<C-M>end\<ESC>
+  ok4a\<C-R>=knobs#("k4a")\<C-M>end\<ESC>
 
 Expect:
   Knobs
@@ -13,3 +15,5 @@ Expect:
   k3a
   k3b
   end
+  k3a1end
+  k4a0end

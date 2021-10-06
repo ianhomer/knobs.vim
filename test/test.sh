@@ -35,7 +35,7 @@ filetype off
 set rtp=$PLUGIN_DIR/vader.vim
 set rtp+=.
 filetype plugin indent on
-execute "source test/.vimrc"
+execute "source test/test.vim"
 EOF
 ) 'redir! > build/vim-out.log' +'Vader! test/*.vader' 2>build/vim-error.log
 [[ -f build/vim-out.log ]] && cat build/vim-out.log

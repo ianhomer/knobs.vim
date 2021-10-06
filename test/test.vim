@@ -14,7 +14,3 @@ let g:knobs_levels = {
   \   "k5a":5,
   \   "k5b":5
   \ }
-
-if knobs#("k1a")
-  echo "Knob k1a is enabled"
-end

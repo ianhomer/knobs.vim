@@ -11,6 +11,10 @@ if !exists("g:knobs_default_level")
   let g:knobs_default_level = 3
 endif
 
+function! knobs#(knob)
+  return exists("g:knob_" . a:knob)
+endfunction
+
 function! knobs#At(level)
   return g:knobs_level >= a:level
 endfunction
