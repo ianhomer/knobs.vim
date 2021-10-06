@@ -21,7 +21,7 @@ Why?
 Set up feature flags in your .vimrc
 
 ```vim
-" Levels at which knobs are enabled
+" Levels at which features are enabled
 let g:knobs_levels = {
   \   "fugitive":3,
   \   "eunuch":5
@@ -43,8 +43,8 @@ above,
 
     VIM_KNOBS=5 vim
 
-would load `vim-eunuch` plugin, however
+would load `vim-eunuch` plugin, however (with knob level of 3 as default),
 
-    VIM_KNOBS=3 vim
+    vim
 
 would only load `vim-fugitive` and `vim-rhubarb`.
