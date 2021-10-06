@@ -4,7 +4,7 @@ Feature flags and conditional configurations. Vim with knobs.
 
 Why?
 
-- Different configuration for different environments.
+- Different configurationis for different environments.
 - Toggle on and off experimental plugins.
 - Spin up different configuration levels, light vs full.
 
@@ -18,7 +18,7 @@ Why?
 
 ### Usage
 
-Set up feature flags in your .vimrc
+Set up feature flags in your `.vimrc`
 
 ```vim
 " Levels at which features are enabled
