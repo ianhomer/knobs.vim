@@ -2,10 +2,14 @@
 
 ## Local test
 
+Run unit tests
+
+    make test
+
 Spin up plugin in local install of vim
 
-    test/start.sh
+    make start
 
 Spin up local container to test in isolation
 
-    test/exec.sh
+    make container

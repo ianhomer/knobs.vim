@@ -41,8 +41,8 @@ function! knobs#Init()
 
   call s:DefineCommands()
 
-  let g:knobs_level = exists('$VIM_KNOB' ) ?
-    \ $VIM_KNOB : 
+  let g:knobs_level = exists('$VIM_KNOBS' ) ?
+    \ $VIM_KNOBS : 
     \ exists('g:knobs_default_level') ? g:knobs_default_level : 0
 
   " Do full initialisation if config level greater than zero

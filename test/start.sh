@@ -17,8 +17,8 @@ echo "Start up vim with knobs.vim : $COMMAND"
 
 $COMMAND -Nu <(cat << EOF
 filetype off
-set rtp=.
-execute "source test/.vimrc"
+set rtp+=.
+execute "source test/common.vim"
 filetype plugin indent on
 EOF
 )

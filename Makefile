@@ -9,4 +9,10 @@ dependencies: $(vader)
 run:
 	test/test.sh
 
+container:
+	test/container.sh
+
+start:
+	test/start.sh
+
 test: dependencies run
