@@ -43,7 +43,8 @@ above,
 
     VIM_KNOBS=5 vim
 
-would load `vim-eunuch` plugin, however (with default knob level of 3),
+would load `vim-fugitive`, `vim-rhubarb` and `vim-eunuch` plugins, however (with
+default knob level of 3),
 
     vim
 
