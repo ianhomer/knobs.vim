@@ -36,7 +36,7 @@ fi
 #
 
 set +e
-$COMMAND -Nu <(cat << EOF
+$COMMAND -es -Nu <(cat << EOF
 filetype off
 set rtp=$PLUGIN_DIR/vader.vim
 set rtp+=.
