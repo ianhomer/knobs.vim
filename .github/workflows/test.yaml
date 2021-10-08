@@ -13,7 +13,7 @@ jobs:
         run: |
           luarocks install busted
       - name: test
-          make test-lua
+        run: make test-lua
 
   test-vader:
     runs-on: ubuntu-latest
