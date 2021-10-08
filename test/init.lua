@@ -6,4 +6,16 @@ vim.api.nvim_set_var(
     }
 )
 
-local knobs = require("knobs")
+vim.cmd "packadd packer.nvim" -- load the package manager
+
+return require("packer").startup {
+    function(_use)
+        local use = require "knobs".use(_use)
+        use "wbthomason/packer.nvim"
+        use "tpope/vim-fugitive"
+        use "tpope/vim-eunuch"
+    end,
+    config = {
+        plugin_package = "packerdev"
+    }
+}
