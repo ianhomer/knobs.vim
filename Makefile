@@ -8,18 +8,16 @@ $(vader):
 $(packer):
 	git clone https://github.com/wbthomason/packer.nvim $(packer)
  
-dependencies: $(vader) $(packer)
-
-test-vader: dependencies
+test-vader: $(vader)
 	test/test.sh
 
-test-lua: dependencies
+test-lua:
 	busted test/test.lua
 
-container:
+container: $(packer)
 	test/container.sh
 
-start:
+start: $(packer)
 	test/start.sh
 
 test: test-lua test-vader
