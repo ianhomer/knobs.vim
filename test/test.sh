@@ -21,6 +21,12 @@ if [[ ! -d $PLUGIN_DIR ]] ; then
 fi
 echo $PLUGIN_DIR
 
+if [[ "$COMMAND" == "vim" ]] ; then
+  INIT_SCRIPT="test/test.vim"
+else
+  INIT_SCRIPT="test/test.lua"
+fi
+
 #
 # Run vim (or neovim) with the given configuration
 # Note that we redirect output with redir since directing nvim output to
@@ -35,7 +41,7 @@ filetype off
 set rtp=$PLUGIN_DIR/vader.vim
 set rtp+=.
 filetype plugin indent on
-execute "source test/test.vim"
+execute "source $INIT_SCRIPT"
 EOF
 ) 'redir! > build/vim-out.log' +'Vader! test/*.vader' 2>build/vim-error.log
 [[ -f build/vim-out.log ]] && cat build/vim-out.log

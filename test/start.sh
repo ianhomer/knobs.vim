@@ -10,7 +10,13 @@ while getopts "c:" o; do case "$o" in
   c) COMMAND=$OPTARG ;;
 esac done
 
-echo "Start up vim with knobs.vim : $COMMAND"
+if [[ "$COMMAND" == "vim" ]] ; then
+  INIT_SCRIPT="test/common.vim"
+else
+  INIT_SCRIPT="test/init.lua"
+fi
+
+echo "Start up $COMMAND with knobs.vim : $COMMAND"
 
 #
 # Start up vim with just this plugin
@@ -18,7 +24,7 @@ echo "Start up vim with knobs.vim : $COMMAND"
 $COMMAND -Nu <(cat << EOF
 filetype off
 set rtp+=.
-execute "source test/common.vim"
+execute "source $INIT_SCRIPT"
 filetype plugin indent on
 EOF
 )
