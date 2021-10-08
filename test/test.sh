@@ -22,9 +22,9 @@ fi
 echo $PLUGIN_DIR
 
 if [[ "$COMMAND" == "vim" ]] ; then
-  INIT_SCRIPT="test/test.vim"
+  INIT_SCRIPT="test/init/test.vim"
 else
-  INIT_SCRIPT="test/test.lua"
+  INIT_SCRIPT="test/init/test.lua"
 fi
 
 #

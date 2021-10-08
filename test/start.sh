@@ -11,9 +11,9 @@ while getopts "c:" o; do case "$o" in
 esac done
 
 if [[ "$COMMAND" == "vim" ]] ; then
-  INIT_SCRIPT="test/common.vim"
+  INIT_SCRIPT="test/init/common.vim"
 else
-  INIT_SCRIPT="test/init.lua"
+  INIT_SCRIPT="test/init/init.lua"
 fi
 
 echo "Start up $COMMAND with knobs.vim : $COMMAND"

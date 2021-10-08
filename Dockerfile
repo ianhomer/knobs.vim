@@ -23,9 +23,9 @@ RUN mkdir -p /home/me/.local/share/nvim/site/pack/ianhomer/start
 RUN mkdir -p /home/me/.config/nvim
 COPY . /home/me/.vim/pack/ianhomer/start/knobs.vim
 COPY . /home/me/.local/share/nvim/site/pack/ianhomer/start/knobs.vim
-COPY test/.vimrc /home/me/.vimrc
-COPY test/common.vim /home/me/common.vim
-COPY test/init.lua /home/me/.config/nvim/init.lua
+COPY test/init/.vimrc /home/me/.vimrc
+COPY test/init/common.vim /home/me/common.vim
+COPY test/init/init.lua /home/me/.config/nvim/init.lua
 RUN chown -R me.us /home/me
 USER me
 RUN VIM_KNOBS=5 vim +PlugInstall +qa
