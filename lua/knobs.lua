@@ -3,7 +3,9 @@ local KNOB_VIM_RE = "^[%w-]+/n?vim%-([%w-]+)"
 local KNOB_VIM_AFTER_RE = "^[%w-]+/([%w-]+)-n?vim"
 local KNOB_RE = "^[%w-]+/([%w-]+)"
 
-vim.cmd "call knobs#Init()"
+function M.setup()
+  vim.cmd "call knobs#Init()"
+end
 
 function M.has(knob)
     return (vim.g["knob_" .. knob] or 0) > 0

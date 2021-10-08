@@ -12,7 +12,7 @@ test-vader: $(vader)
 	test/test.sh
 
 test-lua:
-	busted test/test.lua
+	busted --lpath=./lua/?.lua test/test.lua
 
 container: $(packer)
 	test/container.sh
