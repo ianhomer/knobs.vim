@@ -3,7 +3,19 @@ name: test
 on: [push, workflow_dispatch]
 
 jobs:
-  test:
+  test-lua:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: leafo/gh-actions-lua@v8
+      - uses: leafo/gh-actions-luarocks@v4
+      - name: Setup dependencies
+        run: |
+          luarocks install busted
+      - name: test
+          make test-lua
+
+  test-vader:
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,4 +42,4 @@ jobs:
           VIM_COMMAND: ${{ steps.vim.outputs.executable }}
         run: |
           echo $VIM_COMMAND
-          make test
+          make test-vader

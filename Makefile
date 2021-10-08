@@ -10,8 +10,11 @@ $(packer):
  
 dependencies: $(vader) $(packer)
 
-run:
+test-vader: dependencies
 	test/test.sh
+
+test-lua: dependencies
+	busted test/test.lua
 
 container:
 	test/container.sh
@@ -19,4 +22,4 @@ container:
 start:
 	test/start.sh
 
-test: dependencies run
+test: test-lua test-vader
