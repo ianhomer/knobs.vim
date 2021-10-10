@@ -36,4 +36,10 @@ start-vim: $(plug)
 start-nvim: $(packer)
 	test/start.sh -c nvim
 
+start-vim-knobs: $(plug)
+	test/start.sh -c vim -k
+
+start-nvim-knobs: $(packer)
+	test/start.sh -c nvim -k
+
 test: test-nvim test-lua test-vader
