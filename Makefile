@@ -28,7 +28,12 @@ test-nvim: $(plenary)
 container: $(packer)
 	test/container.sh
 
-start: $(packer) $(plug)
-	test/start.sh
+start: start-vim 
+
+start-vim: $(plug)
+	test/start.sh -c vim
+
+start-nvim: $(packer)
+	test/start.sh -c nvim
 
 test: test-nvim test-lua test-vader
