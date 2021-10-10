@@ -6,9 +6,14 @@ Run unit tests
 
     make test
 
-Spin up plugin in local install of vim
+Spin up plugin in local install of vim with configuration isolated from your
+local environment
 
     make start
+
+Spin up in nvim
+
+    make start-nvim
 
 Spin up local container to test in isolation
 

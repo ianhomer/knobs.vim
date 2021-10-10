@@ -6,7 +6,8 @@ vim.api.nvim_set_var(
     }
 )
 
-vim.cmd "packadd packer.nvim" -- load the package manager
+-- vim.cmd "packadd packer.nvim" -- load the package manager
+local configDir = vim.g["knobs_test_config_root"] or "~/.local/share/nvim" 
 
 return require("packer").startup {
     function(_use)
@@ -17,6 +18,7 @@ return require("packer").startup {
         use "tpope/vim-eunuch"
     end,
     config = {
+        package_root = configDir .. "/site/pack",
         plugin_package = "vendor"
     }
 }

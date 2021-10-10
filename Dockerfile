@@ -29,5 +29,6 @@ COPY test/init/init.lua /home/me/.config/nvim/init.lua
 RUN chown -R me.us /home/me
 USER me
 RUN VIM_KNOBS=5 vim +PlugInstall +qa
-RUN VIM_KNOBS=5 nvim +PackerSync +qa
+RUN VIM_KNOBS=5 nvim --headless -c 'autocmd User PackerComplete quitall' \
+    +PackerSync
 WORKDIR /home/me
