@@ -18,12 +18,13 @@ function M.fromPackage(package)
 end
 
 function M.use(use)
+    M.setup()
     return function(args)
         if type(args) == "string" then
             args = {args}
         end
         local package = args[1]
-        knob = args.knob or fromPackage(package)
+        knob = args.knob or M.fromPackage(package)
         local knobVariable = "knob_" .. knob
         if vim.g["knobs_levels"][knob] ~= nil then
             args.cond = 'vim.g["' .. knobVariable .. '"]'

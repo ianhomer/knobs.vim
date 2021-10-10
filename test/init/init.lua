@@ -12,6 +12,7 @@ return require("packer").startup {
     function(_use)
         local use = require "knobs".use(_use)
         use "wbthomason/packer.nvim"
+        use {"ianhomer/knobs.vim", lock = true}
         use "tpope/vim-fugitive"
         use "tpope/vim-eunuch"
     end,
