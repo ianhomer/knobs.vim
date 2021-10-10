@@ -11,7 +11,7 @@ describe("knobs", function()
     end)
 
     it("does not have k5b", function()
-      assert(knobs.has("k1a"))
+      assert(not knobs.has("k5b"))
     end)
   end)
 end)

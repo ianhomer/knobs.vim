@@ -12,7 +12,7 @@ esac done
 
 echo "Running tests with : $COMMAND"
 
-PLUGIN_DIR=./build/vim/plugins
+PLUGIN_DIR=~/.vim/vendor/plugins
 
 # use local plugin directory if it exists, otherwise assume it's relative to
 # home.
