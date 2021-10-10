@@ -13,6 +13,8 @@ esac done
 echo "Running tests with : $COMMAND"
 
 PLUGIN_DIR=~/.vim/vendor/plugins
+BUILD_DIR=`realpath $_DIR/../build`
+mkdir -p $BUILD_DIR
 
 # use local plugin directory if it exists, otherwise assume it's relative to
 # home.
@@ -43,6 +45,6 @@ set rtp+=.
 filetype plugin indent on
 execute "source $INIT_SCRIPT"
 EOF
-) 'redir! > build/vim-out.log' +'Vader! test/*.vader' 2>build/vim-error.log
-[[ -f build/vim-out.log ]] && cat build/vim-out.log
-cat build/vim-error.log
+) 'redir! > build/vim-out.log' +'Vader! test/*.vader' 2>$BUILD_DIR/vim-error.log
+[[ -f $BUILD_DIR/vim-out.log ]] && cat $BUILD_DIR/vim-out.log
+cat $BUILD_DIR/vim-error.log
