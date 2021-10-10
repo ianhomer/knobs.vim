@@ -39,11 +39,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: checkout vader.vim
-        uses: actions/checkout@v2
-        with:
-          repository: junegunn/vader.vim
-          path: ./build/vim/plugins/vader.vim
       - uses: rhysd/action-setup-vim@v1
         id: vim
         with:
