@@ -11,7 +11,7 @@ function M.has(knob)
     return (vim.g["knob_" .. knob] or 0) > 0
 end
 
-function knobFromPackage(package)
+function M.fromPackage(package)
     return (package:match(KNOB_VIM_RE) or package:match(KNOB_VIM_AFTER_RE) or package:match(KNOB_RE)):gsub("-", "_"):lower(
 
     )
@@ -23,7 +23,7 @@ function M.use(use)
             args = {args}
         end
         local package = args[1]
-        knob = args.knob or knobFromPackage(package)
+        knob = args.knob or fromPackage(package)
         local knobVariable = "knob_" .. knob
         if vim.g["knobs_levels"][knob] ~= nil then
             args.cond = 'vim.g["' .. knobVariable .. '"]'
