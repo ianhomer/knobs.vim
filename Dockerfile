@@ -15,14 +15,14 @@ RUN groupadd us && \
 RUN echo "me ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/me
 RUN curl -fLo /home/me/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-RUN mkdir -p /home/me/.local/share/nvim/site/pack/packerdev/start
+RUN mkdir -p /home/me/.local/share/nvim/site/pack/vendor/start
 RUN git clone https://github.com/wbthomason/packer.nvim \
-    /home/me/.local/share/nvim/site/pack/packerdev/start/packer.nvim
-RUN mkdir -p /home/me/.vim/pack/ianhomer/start
-RUN mkdir -p /home/me/.local/share/nvim/site/pack/ianhomer/start
+    /home/me/.local/share/nvim/site/pack/vendor/start/packer.nvim
+RUN mkdir -p /home/me/.vim/pack/vendor/start
+RUN mkdir -p /home/me/.local/share/nvim/site/pack/vendor/start
 RUN mkdir -p /home/me/.config/nvim
-COPY . /home/me/.vim/pack/ianhomer/start/knobs.vim
-COPY . /home/me/.local/share/nvim/site/pack/ianhomer/start/knobs.vim
+COPY . /home/me/.vim/pack/vendor/start/knobs.vim
+COPY . /home/me/.local/share/nvim/site/pack/vendor/start/knobs.vim
 COPY test/init/.vimrc /home/me/.vimrc
 COPY test/init/common.vim /home/me/common.vim
 COPY test/init/init.lua /home/me/.config/nvim/init.lua

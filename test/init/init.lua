@@ -16,6 +16,6 @@ return require("packer").startup {
         use "tpope/vim-eunuch"
     end,
     config = {
-        plugin_package = "packerdev"
+        plugin_package = "vendor"
     }
 }
