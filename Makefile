@@ -1,6 +1,6 @@
 vader = ~/.vim/vendor/plugins/vader.vim
 packer = ~/.local/share/nvim-test/site/pack/vendor/start/packer.nvim
-plenary = ~/.local/share/nvim-test/site/pack/vendor/start/plenary.nvim
+plenary = ~/.local/share/nvim/site/pack/vendor/opt/plenary.nvim
 plug = ~/.vim/vendor/plugins/vim-plug/autoload
 minimal_init = test/init/minimal_init.vim
 
