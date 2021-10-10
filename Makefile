@@ -4,7 +4,7 @@ plenary = ~/.local/share/nvim/site/pack/vendor/start/plenary.nvim
 minimal_init = test/init/minimal_init.vim
 
 $(vader):
-	git clone --depth 1 git@github.com:junegunn/vader.vim.git $(vader)
+	git clone --depth 1 https://github.com/junegunn/vader.vim $(vader)
 
 $(packer):
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim $(packer)
