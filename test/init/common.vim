@@ -7,7 +7,7 @@ let g:knobs_levels = {
   \   "eunuch":5
   \ }
 
-call plug#begin('~/.vim/develop/knobs.vim/plugged')
+call plug#begin('~/.vim/vendor/knobs.vim/plugged')
 
 if knobs#("fugitive")
   Plug 'tpope/vim-fugitive'

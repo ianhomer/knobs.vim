@@ -15,6 +15,7 @@ if [[ "$COMMAND" == "vim" ]] ; then
 else
   INIT_SCRIPT="test/init/init.lua"
 fi
+PLUGIN_DIR=~/.vim/vendor/plugins
 
 echo "Start up $COMMAND with knobs.vim : $COMMAND"
 
@@ -23,6 +24,9 @@ echo "Start up $COMMAND with knobs.vim : $COMMAND"
 
 $COMMAND -Nu <(cat << EOF
 filetype off
+set rtp=$PLUGIN_DIR/vim-plug
+set rtp+=/usr/local/share/vim/vimfiles
+set rtp+=/usr/local/share/vim/vim82
 set rtp+=.
 execute "source $INIT_SCRIPT"
 filetype plugin indent on

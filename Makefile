@@ -1,6 +1,7 @@
 vader = ~/.vim/vendor/plugins/vader.vim
 packer = ~/.local/share/nvim/site/pack/vendor/start/packer.nvim
 plenary = ~/.local/share/nvim/site/pack/vendor/start/plenary.nvim
+plug = ~/.vim/vendor/plugins/vim-plug/autoload
 minimal_init = test/init/minimal_init.vim
 
 $(vader):
@@ -11,6 +12,9 @@ $(packer):
 
 $(plenary):
 	git clone --depth 1 https://github.com/nvim-lua/plenary.nvim $(plenary)
+
+$(plug):
+	git clone --depth 1 https://github.com/junegunn/vim-plug.git $(plug)
 
 test-vader: $(vader)
 	test/test.sh
@@ -24,7 +28,7 @@ test-nvim: $(plenary)
 container: $(packer)
 	test/container.sh
 
-start: $(packer)
+start: $(packer) $(plug)
 	test/start.sh
 
 test: test-nvim test-lua test-vader
