@@ -24,6 +24,7 @@ return require("packer").startup {
         profile = {
           enable = true,
         },
+        log = { level = 'trace' },
         compile_path = configDir .. "/plugin/packer_compiled.lua",
         package_root = dataDir .. "/site/pack",
         plugin_package = "vendor"
