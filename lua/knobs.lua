@@ -12,24 +12,30 @@ function M.has(knob)
 end
 
 function M.fromPackage(package)
-    return (package:match(KNOB_VIM_RE) or package:match(KNOB_VIM_AFTER_RE) or package:match(KNOB_RE)):gsub("-", "_"):lower(
-
-    )
+    knob = package:match(KNOB_VIM_RE) 
+      or package:match(KNOB_VIM_AFTER_RE) 
+      or package:match(KNOB_RE)
+    if (knob) then
+      return knob:gsub("-", "_"):lower()
+    else
+      return nil
+    end
 end
 
 function M.use(use)
-    M.setup()
     return function(args)
         if type(args) == "string" then
             args = {args}
         end
         local package = args[1]
         knob = args.knob or M.fromPackage(package)
-        local knobVariable = "knob_" .. knob
-        if vim.g["knobs_levels"][knob] ~= nil then
-            args.cond = 'vim.g["' .. knobVariable .. '"]'
+        if (knob) then
+          local knobVariable = "knob_" .. knob
+          if vim.g["knobs_levels"][knob] ~= nil then
+              args.cond = 'vim.g["' .. knobVariable .. '"]'
+          end
         end
-        use(args)
+        return use(args)
     end
 end
 

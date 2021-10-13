@@ -20,7 +20,7 @@ test-vader: $(vader)
 	test/test.sh
 
 test-lua:
-	busted --lpath=./lua/?.lua test/test.lua
+	busted --lpath=./lua/?.lua lua/tests/unit/test.lua
 
 test-nvim: $(plenary)
 	nvim --headless --noplugin  -u ${minimal_init} -c "PlenaryBustedDirectory lua/tests/automated/ { minimal_init = '${minimal_init}' }"

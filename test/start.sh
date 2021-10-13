@@ -19,9 +19,10 @@ esac done
 
 if [[ "$COMMAND" == "vim" ]] ; then
   INIT_SCRIPT="test/init/start.vim"
+  FULL_COMMAND="$COMMAND"
 else
   INIT_SCRIPT="test/init/start-nvim.vim"
-  COMMAND="nvim --clean"
+  FULL_COMMAND="nvim --clean"
 fi
 
 BUILD_DIR=`realpath $_DIR/../build`
@@ -31,7 +32,8 @@ PLUGIN_DIR=~/.vim/vendor/plugins
 
 echo "Start up $COMMAND with knobs.vim : $COMMAND"
 
-$COMMAND -Nu <(cat << EOF
+$FULL_COMMAND --startuptime "build/$COMMAND-startup.log" -Nu <(cat << EOF
 execute "source $INIT_SCRIPT"
 EOF
-)$EXTRA > $BUILD_DIR/start.log
+)
+#> $BUILD_DIR/start.log

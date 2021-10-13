@@ -1,10 +1,14 @@
-vim = {
-  cmd = function() end
-}
-
-knobs = require("knobs")
 
 describe("knobs", function()
+  setup(function()
+    _G.vim = {
+      cmd = function() end
+    }
+    knobs = require("knobs")
+    function mockUse(args)
+      return args 
+    end
+  end)
   describe("from package name", function()
     it("when nvim after", function()
       assert.are.equal(knobs.fromPackage("x/x.nvim"),"x")
@@ -19,4 +23,13 @@ describe("knobs", function()
       assert.are.equal(knobs.fromPackage("x/vim-x"),"x")
     end)
   end)
+  
+  describe("use", function()
+    it("when no knobs set", function()
+      local use = knobs.use(mockUse)
+      assert.are.same(use({"no-knob"}), {"no-knob"})
+    end)
+  end)
 end)
+
+

@@ -15,6 +15,9 @@ Spin up in nvim
 
     make start-nvim
 
+And see compiled packer script at
+`~/.config/nvim-test/plugin/packer_compiled.lua`
+
 Spin up local container to test in isolation
 
     make container

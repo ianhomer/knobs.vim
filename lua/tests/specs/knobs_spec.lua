@@ -1,11 +1,11 @@
 local knobs = require("knobs")
 
+function mockUse(args)
+  return args
+end
+
 describe("knobs", function()
   describe("sanity", function()
-    it("", function()
-      assert(true)
-    end)
-
     it("has k1a", function()
       assert(knobs.has("k1a"))
     end)
@@ -14,4 +14,5 @@ describe("knobs", function()
       assert(not knobs.has("k5b"))
     end)
   end)
+
 end)
