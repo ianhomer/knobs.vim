@@ -40,6 +40,7 @@ export VIM_KNOBS_TEST=1
 #
 
 set +e
+
 $COMMAND -es -Nu <(cat << EOF
 filetype off
 set rtp=$PLUGIN_DIR/vader.vim
@@ -48,5 +49,9 @@ filetype plugin indent on
 execute "source $INIT_SCRIPT"
 EOF
 ) 'redir! > build/vim-out.log' +'Vader! test/*.vader' 2>$BUILD_DIR/vim-error.log
+result=$?
 [[ -f $BUILD_DIR/vim-out.log ]] && cat $BUILD_DIR/vim-out.log
-cat $BUILD_DIR/vim-error.log
+if [[ "$result" == "1" ]] ; then
+  cat $BUILD_DIR/vim-error.log
+  exit 1
+fi

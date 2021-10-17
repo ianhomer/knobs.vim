@@ -8,7 +8,7 @@ vim.api.nvim_set_var(
 
 vim.g["knobs_layers_map"] = {
   test = {
-    test_a = 1
+    local_knobs = 1
   }
 }
 
@@ -23,7 +23,9 @@ require("packer").startup {
     function(_use)
         local use = knobs.use(_use)
         use "wbthomason/packer.nvim"
-        -- use {"ianhomer/knobs.vim", lock = true}
+        if not knobs.has("local_knobs") then
+          use {"ianhomer/knobs.vim", lock = true}
+        end
         use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
         use "tpope/vim-eunuch"
     end,
