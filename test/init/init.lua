@@ -13,11 +13,11 @@ local configDir = vim.g["knobs_test_config_dir"] or "~/.config/nvim/"
 local knobs = require "knobs"
 knobs.setup()
 
-return require("packer").startup {
+require("packer").startup {
     function(_use)
         local use = knobs.use(_use)
         use "wbthomason/packer.nvim"
-        use {"ianhomer/knobs.vim", lock = true}
+        -- use {"ianhomer/knobs.vim", lock = true}
         use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
         use "tpope/vim-eunuch"
     end,
