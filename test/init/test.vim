@@ -15,6 +15,13 @@ let g:knobs_levels = {
   \   "k5b":5
   \ }
 
+" Feature toggles triggered by each layer
+let g:knobs_layers_map = {
+  \    "test":{
+  \      "test_a":1,
+  \    }
+  \  }
+
 if knobs#("k1a")
   IfKnob 'k1a' noremap <space>a ak1a<ESC>
 end

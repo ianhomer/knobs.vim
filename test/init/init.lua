@@ -6,6 +6,12 @@ vim.api.nvim_set_var(
     }
 )
 
+vim.g["knobs_layers_map"] = {
+  test = {
+    test_a = 1
+  }
+}
+
 -- vim.cmd "packadd packer.nvim" -- load the package manager
 local dataDir = vim.g["knobs_test_data_dir"] or "~/.local/share/nvim"
 local configDir = vim.g["knobs_test_config_dir"] or "~/.config/nvim/"

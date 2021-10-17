@@ -1,6 +1,7 @@
 vader = ~/.vim/vendor/plugins/vader.vim
-packer = ~/.local/share/nvim-test/site/pack/vendor/start/packer.nvim
-plenary = ~/.local/share/nvim/site/pack/vendor/opt/plenary.nvim
+nvim_share = ~/.local/share/nvim-test
+packer = $(nvim_share)/knobs-start/site/pack/vendor/start/packer.nvim
+plenary = $(nvim_share)/knobs-test/site/pack/vendor/opt/plenary.nvim
 plug = ~/.vim/vendor/plugins/vim-plug/autoload
 minimal_init = test/init/minimal-init.vim
 
@@ -23,7 +24,7 @@ test-lua:
 	busted --lpath=./lua/?.lua lua/tests/unit/test.lua
 
 test-nvim: $(plenary)
-	nvim --headless --noplugin  -u ${minimal_init} -c "PlenaryBustedDirectory lua/tests/specs/ { minimal_init = '${minimal_init}' }"
+	nvim --headless --clean  -u ${minimal_init} -c "PlenaryBustedDirectory lua/tests/specs { minimal_init = '${minimal_init}' }"
 
 container: $(packer)
 	test/container.sh

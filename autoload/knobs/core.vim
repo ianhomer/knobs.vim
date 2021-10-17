@@ -11,6 +11,9 @@ function! knobs#core#Init()
 
   " Apply all levels
   call knobs#core#InitLevels()
+
+  " Apply all layers
+  call knobs#core#ApplyLayers()
 endfunction
 
 " Init feature toggles based on knobs levels (called first time)
@@ -31,3 +34,30 @@ function! knobs#core#RunIf(knob, ...)
   endif
 endfunction
 
+" Apply feature toggles for all layers
+function! knobs#core#ApplyLayers()
+  for [layer,enabled] in items(g:knobs_layers)
+    if enabled
+      call knobs#core#ApplyLayer(layer, enabled)
+    endif
+  endfor
+endfunction
+
+function! knobs#core#ApplyLayer(layer, enabled)
+  if has_key(g:knobs_layers_map, a:layer)
+    for [feature,value] in items(g:knobs_layers_map[a:layer])
+      call knobs#core#SetKnob(feature, a:enabled ? value : 1 - value)
+    endfor
+  endif
+endfunction
+
+function! knobs#core#SetKnob(knob, value)
+  let g:knobs[a:knob] = a:value
+  " And set a global file since cheaper to check at run time
+  let knob_name = "g:knob_" . a:knob
+  if a:value > 0
+    let {knob_name} = a:value
+  elseif exists(knob_name)
+    unlet {knob_name}
+  endif
+endfunction

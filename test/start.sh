@@ -29,6 +29,7 @@ BUILD_DIR=`realpath $_DIR/../build`
 mkdir -p $BUILD_DIR
 
 echo "Start up $COMMAND with knobs.vim : $COMMAND"
+export VIM_KNOBS_TEST=1
 
 $FULL_COMMAND --startuptime "build/$COMMAND-startup.log" -Nu <(cat << EOF
 execute "source $INIT_SCRIPT"

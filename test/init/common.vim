@@ -7,6 +7,13 @@ let g:knobs_levels = {
   \   "eunuch":5
   \ }
 
+" Feature toggles triggered by each layer
+let g:knobs_layers_map = {
+  \    "test":{
+  \      "test_a":1,
+  \    }
+  \  }
+
 call plug#begin('~/.vim/vendor/knobs.vim/plugged')
 
 if knobs#("fugitive")

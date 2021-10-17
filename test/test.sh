@@ -29,6 +29,8 @@ else
   INIT_SCRIPT="test/init/test.lua"
 fi
 
+export VIM_KNOBS_TEST=1
+
 #
 # Run vim (or neovim) with the given configuration
 # Note that we redirect output with redir since directing nvim output to

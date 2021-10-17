@@ -11,6 +11,10 @@ function M.has(knob)
     return (vim.g["knob_" .. knob] or 0) > 0
 end
 
+function M.asString()
+    return vim.g["knobs_levels"]
+end
+
 function M.fromPackage(package)
     knob = package:match(KNOB_VIM_RE) or package:match(KNOB_VIM_AFTER_RE) or package:match(KNOB_RE)
     if (knob) then

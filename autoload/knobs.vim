@@ -11,6 +11,17 @@ if !exists("g:knobs_default_level")
   let g:knobs_default_level = 3
 endif
 
+if !exists('g:knobs_layers_map')
+  let g:knobs_layers_map={}
+endif
+
+" Default state of layers
+let g:knobs_layers = get(g:, "layers",{
+  \   "mobile": $ANDROID_DATA == '/data' ? 1 : 0,
+  \   "debug": $VIM_KNOBS_DEBUG == "1" ? 1 : 0,
+  \   "test": $VIM_KNOBS_TEST == "1" ? 1: 0
+  \ })
+
 function! knobs#(knob)
   return exists("g:knob_" . a:knob)
 endfunction

@@ -14,6 +14,12 @@ vim.api.nvim_set_var(
     }
 )
 
+vim.g["knobs_layers_map"] = {
+  test = {
+    test_a = 1
+  }
+}
+
 local knobs = require("knobs")
 
 if knobs.has("k1a") then
