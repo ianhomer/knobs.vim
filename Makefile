@@ -23,7 +23,7 @@ test-lua:
 	busted --lpath=./lua/?.lua lua/tests/unit/test.lua
 
 test-nvim: $(plenary)
-	nvim --headless --noplugin  -u ${minimal_init} -c "PlenaryBustedDirectory lua/tests/automated/ { minimal_init = '${minimal_init}' }"
+	nvim --headless --noplugin  -u ${minimal_init} -c "PlenaryBustedDirectory lua/tests/specs/ { minimal_init = '${minimal_init}' }"
 
 container: $(packer)
 	test/container.sh
