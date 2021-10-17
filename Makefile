@@ -28,7 +28,7 @@ test-nvim: $(plenary)
 container: $(packer)
 	test/container.sh
 
-start: start-vim 
+start: start-nvim 
 
 start-vim: $(plug)
 	test/start.sh -c vim

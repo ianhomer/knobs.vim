@@ -28,12 +28,9 @@ fi
 BUILD_DIR=`realpath $_DIR/../build`
 mkdir -p $BUILD_DIR
 
-PLUGIN_DIR=~/.vim/vendor/plugins
-
 echo "Start up $COMMAND with knobs.vim : $COMMAND"
 
 $FULL_COMMAND --startuptime "build/$COMMAND-startup.log" -Nu <(cat << EOF
 execute "source $INIT_SCRIPT"
 EOF
 )
-#> $BUILD_DIR/start.log
