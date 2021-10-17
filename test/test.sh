@@ -21,7 +21,6 @@ mkdir -p $BUILD_DIR
 if [[ ! -d $PLUGIN_DIR ]] ; then
   PLUGIN_DIR=$HOME/$PLUGIN_DIR
 fi
-echo $PLUGIN_DIR
 
 if [[ "$COMMAND" == "vim" ]] ; then
   INIT_SCRIPT="test/init/test.vim"
@@ -35,11 +34,9 @@ export VIM_KNOBS_TEST=1
 # Run vim (or neovim) with the given configuration
 # Note that we redirect output with redir since directing nvim output to
 # /dev/null as per vader documentation leads to a core dump in Github actions.
-# We also capture stderr into a file and cat that because without it 
+# We also capture stderr into a file and cat that because without it
 # we don't see the output when run locally.
 #
-
-set +e
 
 $COMMAND -es -Nu <(cat << EOF
 filetype off
@@ -48,10 +45,12 @@ set rtp+=.
 filetype plugin indent on
 execute "source $INIT_SCRIPT"
 EOF
-) 'redir! > build/vim-out.log' +'Vader! test/*.vader' 2>$BUILD_DIR/vim-error.log
-result=$?
-[[ -f $BUILD_DIR/vim-out.log ]] && cat $BUILD_DIR/vim-out.log
-if [[ "$result" == "1" ]] ; then
-  cat $BUILD_DIR/vim-error.log
-  exit 1
-fi
+) 'redir! > build/vim-out.log' +'Vader! test/*.vader'
+
+# 2>$BUILD_DIR/vim-error.log
+# result=$?
+# [[ -f $BUILD_DIR/vim-out.log ]] && cat $BUILD_DIR/vim-out.log
+# cat $BUILD_DIR/vim-error.log
+# if [[ "$result" == "1" ]] ; then
+#   exit 1
+# fi
