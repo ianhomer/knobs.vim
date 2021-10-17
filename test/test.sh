@@ -28,6 +28,7 @@ if [[ "$COMMAND" == "vim" ]] ; then
 else
   INIT_SCRIPT="test/init/test.lua"
 fi
+echo "... with init script : $INIT_SCRIPT"
 
 export VIM_KNOBS_TEST=1
 
@@ -51,10 +52,10 @@ fi
 #
 
 set -e
-$COMMAND -es -Nu <(cat << EOF
+$COMMAND -es --clean -Nu <(cat << EOF
 filetype off
-set rtp=$PLUGIN_DIR/vader.vim
-set rtp+=.
+set rtp=.
+set rtp+=$PLUGIN_DIR/vader.vim
 filetype plugin indent on
 execute "source $INIT_SCRIPT"
 EOF
