@@ -27,12 +27,12 @@ describe(
         )
 
         describe(
-            "env",
+            "info",
             function()
                 it(
-                    "rtp",
+                    "has correct knob count",
                     function()
-                        -- assert.are.equal("x", vim.o.runtimepath)
+                        assert.are.equal(7, knobs.count())
                     end
                 )
             end
@@ -44,9 +44,6 @@ describe(
                 it(
                     "has test_a",
                     function()
-                        -- assert.are.equal(1, vim.g["knobs_layers"])
-                        -- -- -- -- -- -- -- -- -- assert.are.equal(1, vim.g["knobs_layers_map"])
-                        -- assert.are.equal(1, knobs.asString())
                         assert(knobs.has("test_a"))
                     end
                 )

@@ -11,8 +11,14 @@ function M.has(knob)
     return (vim.g["knob_" .. knob] or 0) > 0
 end
 
-function M.asString()
-    return vim.g["knobs_levels"]
+function size(table)
+  local count = 0
+  for _ in pairs(table) do count = count + 1 end
+  return count
+end
+
+function M.count()
+    return size(vim.g["knobs"])
 end
 
 function M.fromPackage(package)
