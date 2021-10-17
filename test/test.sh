@@ -28,6 +28,7 @@ if [[ "$COMMAND" == "vim" ]] ; then
 else
   INIT_SCRIPT="test/init/test.lua"
 fi
+ls test/init
 echo "... with init script : $INIT_SCRIPT"
 
 export VIM_KNOBS_TEST=1
