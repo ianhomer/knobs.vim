@@ -2,7 +2,7 @@ vader = ~/.vim/vendor/plugins/vader.vim
 packer = ~/.local/share/nvim-test/site/pack/vendor/start/packer.nvim
 plenary = ~/.local/share/nvim/site/pack/vendor/opt/plenary.nvim
 plug = ~/.vim/vendor/plugins/vim-plug/autoload
-minimal_init = test/init/minimal_init.vim
+minimal_init = test/init/minimal-init.vim
 
 $(vader):
 	git clone --depth 1 https://github.com/junegunn/vader.vim $(vader)
