@@ -6,8 +6,9 @@ cd $_DIR/..
 
 COMMAND=${VIM_COMMAND:-vim}
 
-while getopts "c:" o; do case "$o" in
+while getopts "c:i" o; do case "$o" in
   c) COMMAND=$OPTARG ;;
+  i) INTERACTIVE=y ;;
 esac done
 
 echo "Running tests with : $COMMAND"
@@ -29,6 +30,17 @@ else
 fi
 
 export VIM_KNOBS_TEST=1
+
+if [[ "$INTERACTIVE" == "y" ]] ; then
+$COMMAND --clean -Nu <(cat << EOF
+set rtp=.
+set rtp+=\$VIMRUNTIME
+filetype plugin indent on
+execute "source $INIT_SCRIPT"
+EOF
+)
+  exit
+fi
 
 #
 # Run vim (or neovim) with the given configuration

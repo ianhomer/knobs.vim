@@ -21,6 +21,7 @@ vim.g["knobs_layers_map"] = {
 }
 
 local knobs = require("knobs")
+knobs.setup()
 
 if knobs.has("k1a") then
   vim.api.nvim_command("noremap <space>a ak1a<ESC>")
