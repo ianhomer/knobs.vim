@@ -50,6 +50,7 @@ fi
 # we don't see the output when run locally.
 #
 
+set -e
 $COMMAND -es -Nu <(cat << EOF
 filetype off
 set rtp=$PLUGIN_DIR/vader.vim
@@ -57,7 +58,7 @@ set rtp+=.
 filetype plugin indent on
 execute "source $INIT_SCRIPT"
 EOF
-) 'redir! > build/vim-out.log' +'Vader! test/*.vader'
+) -c 'Vader! test/*.vader'
 
 # 2>$BUILD_DIR/vim-error.log
 # result=$?
