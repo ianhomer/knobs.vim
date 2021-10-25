@@ -46,6 +46,7 @@ function M.cond(args)
 end
 
 function M.use(use)
+    M.setup()
     return function(args)
         return use(M.cond(args))
     end

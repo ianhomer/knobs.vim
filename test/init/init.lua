@@ -16,14 +16,11 @@ vim.g["knobs_layers_map"] = {
 local dataDir = vim.g["knobs_test_data_dir"] or "~/.local/share/nvim"
 local configDir = vim.g["knobs_test_config_dir"] or "~/.config/nvim/"
 
-local knobs = require "knobs"
-knobs.setup()
-
 require("packer").startup {
     function(_use)
-        local use = knobs.use(_use)
+        local use = require"knobs".use(_use)
         use "wbthomason/packer.nvim"
-        if not knobs.has("local_knobs") then
+        if not require"knobs".has("local_knobs") then
           use {"ianhomer/knobs.vim", lock = true}
         end
         use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
