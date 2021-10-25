@@ -25,6 +25,7 @@ require("packer").startup {
         end
         use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
         use "tpope/vim-eunuch"
+        use "tpope/vim-dispatch"
     end,
     config = {
         profile = {
