@@ -5,6 +5,8 @@ Do:
   $o\<C-R>=knobs#runtime#Knobs()\<C-M>end\<ESC>
   ok3a\<C-R>=knobs#("k3a")\<C-M>end\<ESC>
   ok4a\<C-R>=knobs#("k4a")\<C-M>end\<ESC>
+  ol3\<C-R>=knobs#At(3)\<C-M>end\<ESC>
+  ol4\<C-R>=knobs#At(4)\<C-M>end\<ESC>
   o\<ESC>\<space>a
   o\<ESC>\<space>b
 
@@ -20,5 +22,7 @@ Expect:
   end
   k3a1end
   k4a0end
+  l31end
+  l40end
   k1a
   k1b
