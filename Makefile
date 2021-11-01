@@ -17,6 +17,11 @@ $(plenary):
 $(plug):
 	git clone --depth 1 https://github.com/junegunn/vim-plug.git $(plug)
 
+clean:
+	rm -Rf ~/.local/share/nvim-test
+	rm -Rf ~/.vim/vendor
+	rm -Rf ./build
+
 test-vader: $(vader)
 	test/test.sh
 

@@ -18,7 +18,6 @@ function! knobs#core#InitLevels()
   else
     let limitedLevel = g:knobs_level
   endif
-  echo g:knobs_level
   for [knob,level] in items(g:knobs_levels)
     if limitedLevel >= level
       let g:knobs[knob] = 1
