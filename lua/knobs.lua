@@ -7,6 +7,10 @@ function M.setup()
     vim.cmd "call knobs#Init()"
 end
 
+function M.refresh()
+    vim.cmd "call knobs#Refresh()"
+end
+
 function M.has(knob)
     return (vim.g["knob_" .. knob] or 0) > 0
 end

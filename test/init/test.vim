@@ -12,7 +12,13 @@ let g:knobs_levels = {
   \   "k4a":4,
   \   "k4b":4,
   \   "k5a":5,
-  \   "k5b":5
+  \   "k5b":5,
+  \   "k6a":6,
+  \   "k6b":6,
+  \   "k7a":7,
+  \   "k7b":7,
+  \   "k8a":8,
+  \   "k8b":8
   \ }
 
 " Feature toggles triggered by each layer

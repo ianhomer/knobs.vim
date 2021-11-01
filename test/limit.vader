@@ -1,0 +1,30 @@
+Given:
+  Hello
+
+Do:
+  olevel\<C-R>=knobs#Level()\<C-M>\<ESC>
+  ok6a\<C-R>=knobs#("k6a")\<C-M>\<ESC>
+  ok8a\<C-R>=knobs#("k8a")\<C-M>\<ESC>
+  :let g:knobs_level=6\<CR>
+  :call knobs#Refresh()\<CR>
+  olevel\<C-R>=knobs#Level()\<C-M>\<ESC>
+  ok6a\<C-R>=knobs#("k6a")\<C-M>\<ESC>
+  ok8a\<C-R>=knobs#("k8a")\<C-M>\<ESC>
+  :let g:knobs_level=8\<CR>
+  :call knobs#Refresh()\<CR>
+  olevel\<C-R>=knobs#Level()\<C-M>\<ESC>
+  ok6a\<C-R>=knobs#("k6a")\<C-M>\<ESC>
+  ok8a\<C-R>=knobs#("k8a")\<C-M>\<ESC>
+
+Expect:
+  Hello
+  level3
+  k6a0
+  k8a0
+  level6
+  k6a1
+  k8a0
+  level8
+  k6a1
+  k8a0
+
