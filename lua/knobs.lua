@@ -43,7 +43,7 @@ function M.cond(args)
     if (knob) then
         local knobVariable = "knob_" .. knob
         if vim.g["knobs_levels"][knob] ~= nil then
-            args.cond = 'vim.g["' .. knobVariable .. '"]'
+            args.cond = 'vim.g["' .. knobVariable .. '"] ~= nil'
         end
     end
     return args
