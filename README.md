@@ -73,3 +73,10 @@ default knob level of 3,
     vim
 
 would only load `vim-fugitive` and `vim-rhubarb`.
+
+```vim
+if !exists("g:knob_fugitive")
+   " Do something if knob is set
+endif
+```
+
