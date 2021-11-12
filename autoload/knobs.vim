@@ -11,6 +11,10 @@ if !exists("g:knobs_default_level")
   let g:knobs_default_level = 3
 endif
 
+if !exists("g:knobs_level_limit")
+  let g:knobs_level_limit = 7
+endif
+
 if !exists('g:knobs_layers_map')
   let g:knobs_layers_map={}
 endif
@@ -34,10 +38,12 @@ function! knobs#Init()
   if exists('g:knobs_initialised')
     return
   endif
+  let g:knobs_level = exists('$VIM_KNOBS' ) ?
+    \ $VIM_KNOBS : 
+    \ exists('g:knobs_default_level') ? g:knobs_default_level : 0
   let g:knobs_initialised = 1
 
   " Set default state of feature toggles
-
   if exists('g:knobs_defaults')
     let g:knobs = get(g:, "knobs", g:knobs_defaults)
 
@@ -52,10 +58,10 @@ function! knobs#Init()
 
   call s:DefineCommands()
 
-  let g:knobs_level = exists('$VIM_KNOBS' ) ?
-    \ $VIM_KNOBS : 
-    \ exists('g:knobs_default_level') ? g:knobs_default_level : 0
+  call knobs#Refresh()
+endfunction
 
+function! knobs#Refresh()
   " Do full initialisation if config level greater than zero
   if knobs#At(1)
     call knobs#core#Init()

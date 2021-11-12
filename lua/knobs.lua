@@ -7,6 +7,10 @@ function M.setup()
     vim.cmd "call knobs#Init()"
 end
 
+function M.refresh()
+    vim.cmd "call knobs#Refresh()"
+end
+
 function M.has(knob)
     return (vim.g["knob_" .. knob] or 0) > 0
 end
@@ -39,7 +43,7 @@ function M.cond(args)
     if (knob) then
         local knobVariable = "knob_" .. knob
         if vim.g["knobs_levels"][knob] ~= nil then
-            args.cond = 'vim.g["' .. knobVariable .. '"]'
+            args.cond = 'vim.g["' .. knobVariable .. '"] ~= nil'
         end
     end
     return args
