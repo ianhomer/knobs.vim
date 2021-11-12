@@ -18,10 +18,13 @@ local configDir = vim.g["knobs_test_config_dir"] or "~/.config/nvim/"
 
 require("packer").startup {
     function(_use)
-        local use = require"knobs".use(_use)
+        local status, knobs = pcall("require","knobs")
+        use = status and knobs.use(_use) or _use
         use "wbthomason/packer.nvim"
-        if not require"knobs".has("local_knobs") then
+        if status and not knobs.has("local_knobs") then
           use {"ianhomer/knobs.vim", lock = true}
+        else
+          use "ianhomer/knobs.vim"
         end
         use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
         use "tpope/vim-eunuch"
