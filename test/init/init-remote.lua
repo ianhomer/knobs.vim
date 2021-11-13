@@ -6,15 +6,15 @@ vim.api.nvim_set_var(
     }
 )
 
-vim.g["knobs_layers_map"] = {
-  test = {
-    local_knobs = 1
-  }
-}
+local hasKnobs, _ = pcall(cmd, "packadd knobs.vim")
+if hasKnobs then
+  knobs = require("knobs")
+  knobs.setup()
+end
 
 require("packer").startup {
     function(_use)
-        local status, knobs = pcall("require","knobs")
+        local status, knobs = pcall(require,"knobs")
         use = status and knobs.use(_use) or _use
         use "wbthomason/packer.nvim"
         use "ianhomer/knobs.vim"
