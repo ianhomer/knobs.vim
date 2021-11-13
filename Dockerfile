@@ -2,6 +2,7 @@
 # Slim docker image for plugin validation
 #
 FROM archlinux:latest
+ARG CONFIGURATION=local
 RUN pacman -Syu --noconfirm \
   curl \
   git \ 
@@ -22,10 +23,13 @@ RUN mkdir -p /home/me/.vim/pack/vendor/start
 RUN mkdir -p /home/me/.local/share/nvim/site/pack/vendor/start
 RUN mkdir -p /home/me/.config/nvim
 COPY . /home/me/.vim/pack/vendor/start/knobs.vim
-COPY . /home/me/.local/share/nvim/site/pack/vendor/start/knobs.vim
-COPY test/init/.vimrc /home/me/.vimrc
+COPY . /home/me/this
+RUN if [[ "${CONFIGURATION}" == "local" ]] ; then \
+  mv /home/me/this /home/me/.local/share/nvim/site/pack/vendor/start/knobs.vim ; \
+  fi
+COPY test/init/${CONFIGURATION}.vimrc /home/me/.vimrc
 COPY test/init/common.vim /home/me/common.vim
-COPY test/init/init.lua /home/me/.config/nvim/init.lua
+COPY test/init/init-${CONFIGURATION}.lua /home/me/.config/nvim/init.lua
 RUN chown -R me.us /home/me
 USER me
 RUN VIM_KNOBS=5 vim +PlugInstall +qa

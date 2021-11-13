@@ -34,6 +34,9 @@ test-nvim: $(plenary)
 container: $(packer)
 	test/container.sh
 
+container-remote: $(packer)
+	test/container.sh remote
+
 start: start-nvim 
 
 start-vim: $(plug)

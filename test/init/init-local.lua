@@ -40,4 +40,3 @@ require("packer").startup {
         plugin_package = "vendor"
     }
 }
-§
