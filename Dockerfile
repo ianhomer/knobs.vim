@@ -33,10 +33,4 @@ RUN chown -R me.us /home/me
 USER me
 RUN VIM_KNOBS=5 vim +PlugInstall +qa
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' +PackerSync
-# In remote mode, we need to run the packer sync a second time so that
-# the knobs plugin installed in the previous PackerSync can do it's work
-RUN if [[ "${CONFIGURATION}" == "remote" ]] ; then \
-  nvim --headless -c 'autocmd User PackerComplete quitall' \
-  +PackerClean +PackerSync ; \
-  fi
 WORKDIR /home/me

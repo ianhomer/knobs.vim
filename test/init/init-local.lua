@@ -15,5 +15,6 @@ require("packer").startup {
         use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
         use "tpope/vim-eunuch"
         use "tpope/vim-dispatch"
+        use "tweekmonster/startuptime.vim"
     end
 }
