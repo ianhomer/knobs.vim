@@ -1,18 +1,99 @@
 *knobs.txt*  Vim with knobs
+*knobs.vim*
 
-INTRODUCTION                                    *knobs*
+CONTENTS                                        *knobs-contents*
+Introduction                                    |knobs-introduction|
+  Quickstart                                    |knobs-quickstart|
+Usage                                           |knobs-usage|
+
+INTRODUCTION                                    *knobs-introduction*
 
 Conditionally configure your vim configuration, allowing you to switch on and
 off features. This can be done by configuration levels. This can provide a
 minimal fast configurations and more expansive experimental configurations.
 
-COMMANDS                                        *knobs-commands*
+QUICKSTART                                      *knobs-quickstart*
 
-:knobs                      Output knobs enabled
+With NeoVim and Packer
+
+  vim.api.nvim_set_var(
+      "knobs_levels",
+      {
+          fugitive = 3,
+          eunuch = 5
+      }
+  )
+
+  require("packer").startup {
+      function(_use)
+          local ok, knobs = pcall(require, "knobs")
+          use = ok and knobs.use(_use) or _use
+
+          use "wbthomason/packer.nvim"
+          use "ianhomer/knobs.vim"
+          use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
+          use "tpope/vim-eunuch"
+          use "tpope/vim-dispatch"
+      end
+  }
+
+Do PackerSync twice, so that the second time knobs can do it's work.
+
+With Vim and Plug
+
+  mkdir -p ~/.vim/plugged
+  cd ~/.vim/plugged
+  git clone https://github.com/ianhomer/knobs.vim
+
+  " Levels at which features are enabled
+  let g:knobs_levels = {
+    \   "fugitive":3,
+    \   "eunuch":5
+  }
+
+  call plug#begin('~/.vim/plugged')
+
+  if knobs#("fugitive")
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
+  endif
+  IfKnob 'eunuch' Plug 'tpope/vim-eunuch'
+
+  call plug#end()
+
+USAGE                                           *knobs-usage*
+
+Set knobs level mapping with the g:knobs_levels global
+
+  let g:knobs_levels = {
+    \   "fugitive":3,
+    \   "eunuch":5
+  }
+
+This indicates at which knobs level the given knob should switch on.
+
+Start Vim at different configuration levels. For example to load all plugins 
+at level 5
+
+    VIM_KNOBS=5 vim
+
+In VimScript you can trigger conditional logic with
+
+    if exists("g:knob_foo")
+       " Do something if knob foo is set
+    endif
+
+In Neovim with lua
+
+    if vim.g.knob_foo then
+      -- Do something if knob foo is set
+    end
+
+:Knobs                      Output knobs enabled
 :KnobsLevel                 Output current knob level
 
 ABOUT                                           *knobs-about*
 
-Get the latest version or report a bug at§:
+Get the latest version or report a bug at:
 
 https://github.com/ianhomer/knobs.vim

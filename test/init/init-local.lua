@@ -6,7 +6,6 @@ vim.api.nvim_set_var(
     }
 )
 
-
 require("packer").startup {
     function(_use)
         use = require("knobs").use(_use)
