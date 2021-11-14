@@ -8,7 +8,9 @@ Why?
 - Toggle on and off experimental plugins.
 - Spin up different configuration levels, light vs full.
 
-## nvim with packer
+## neovim with packer
+
+Configure the level at which a knob should switch on. 
 
 ```lua
 vim.api.nvim_set_var(
@@ -18,7 +20,12 @@ vim.api.nvim_set_var(
         eunuch = 5
     }
 )
+```
 
+Wire in the knobs enhanced use which automatically sets up
+conditionals for the packer loading.
+
+```lua
 require("packer").startup {
     function(_use)
         local ok, knobs = pcall(require, "knobs")
@@ -32,6 +39,10 @@ require("packer").startup {
     end
 }
 ```
+
+The above example would switch on fugitive at level 3 (the default), and would
+switch on eunuch if knobs level set to 5, e.g. starting nvim with 
+`VIM_KNOBS=5 nvim`.
 
 ## vim with plug
 
