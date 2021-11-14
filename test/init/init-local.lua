@@ -6,10 +6,10 @@ vim.api.nvim_set_var(
     }
 )
 
+
 require("packer").startup {
     function(_use)
-        local status, knobs = pcall("require","knobs")
-        use = status and knobs.use(_use) or _use
+        use = require("knobs").use(_use)
         use "wbthomason/packer.nvim"
         use {"ianhomer/knobs.vim", lock = true}
         use {"tpope/vim-fugitive", cmd = {"G", "Git"}}
