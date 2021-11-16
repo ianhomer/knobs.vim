@@ -66,7 +66,7 @@ describe(
                     function()
                         local use = knobs.use(mockUse)
                         setKnob("thing", true)
-                        assert.are.same(use({"x/thing.nvim"}), {"x/thing.nvim", cond = 'vim.g["knob_thing"] ~= nil'})
+                        assert.are.same(use({"x/thing.nvim"}), {"x/thing.nvim", cond = 'vim.g.knob_thing ~= nil'})
                     end
                 )
                 it(
@@ -76,7 +76,7 @@ describe(
                         setKnob("thing", false)
                         assert.are.same(
                             use({"x/thing.nvim"}),
-                            {"x/thing.nvim", cond = 'vim.g["knob_thing"] ~= nil', lock = true}
+                            {"x/thing.nvim", cond = 'vim.g.knob_thing ~= nil', lock = true}
                         )
                     end
                 )
