@@ -14,9 +14,9 @@ describe(
                 function mockUse(args)
                     return args
                 end
-                function setKnob(knob)
-                    vim.g["knob_" .. knob] = 1
-                    vim.g["knobs_levels"][knob] = 1
+                function setKnob(knob, on)
+                    vim.g["knob_" .. knob] = on and 1 or nil
+                    vim.g["knobs_levels"][knob] = on and 1 or 0
                 end
             end
         )
@@ -65,8 +65,19 @@ describe(
                     "when knob set",
                     function()
                         local use = knobs.use(mockUse)
-                        setKnob("thing")
+                        setKnob("thing", true)
                         assert.are.same(use({"x/thing.nvim"}), {"x/thing.nvim", cond = 'vim.g["knob_thing"] ~= nil'})
+                    end
+                )
+                it(
+                    "locks when knob off",
+                    function()
+                        local use = knobs.use(mockUse)
+                        setKnob("thing", false)
+                        assert.are.same(
+                            use({"x/thing.nvim"}),
+                            {"x/thing.nvim", cond = 'vim.g["knob_thing"] ~= nil', lock = true}
+                        )
                     end
                 )
             end
