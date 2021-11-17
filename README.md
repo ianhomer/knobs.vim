@@ -4,13 +4,13 @@ Feature flags and conditional configurations. Vim with knobs.
 
 Why?
 
-- Different configurations for different environments.
-- Toggle on and off experimental plugins.
+- Different configurations for different environments or work contexts.
+- Toggle on and off experimental plugins or configuration.
 - Spin up different configuration levels, light vs full.
 
 ## neovim with packer
 
-Configure the level at which a knob should switch on. 
+Configure the level at which each knob should switch on.
 
 ```lua
 vim.api.nvim_set_var(
@@ -22,8 +22,8 @@ vim.api.nvim_set_var(
 )
 ```
 
-Wire in the knobs enhanced use which automatically sets up
-conditionals for the packer loading.
+Wire in the an enhanced version of packer's use from the knobs plugin which
+automatically sets up conditionals for the packer loading.
 
 ```lua
 require("packer").startup {
@@ -41,8 +41,47 @@ require("packer").startup {
 ```
 
 The above example would switch on fugitive at level 3 (the default), and would
-switch on eunuch if knobs level set to 5, e.g. starting nvim with 
-`VIM_KNOBS=5 nvim`.
+switch on eunuch if knobs level set to 5, e.g. starting nvim with `VIM_KNOBS=5
+nvim`.
+
+Layers can be defined to switch collections of knobs. For example if you want a
+mode for editing your notes as markdown files, you can set up a layer called
+"notes" such as
+
+```lua
+vim.api.nvim_set_var(
+    "knobs_layers_map",
+    {
+        notes = {
+            compactcmd = 1
+        }
+    }
+)
+```
+
+Define when the layer should be enabled
+
+```lua
+vim.api.nvim_set_var(
+    "knobs_layers",
+    {
+      notes = vim.env.VIM_KNOBS_NOTES == "1" and 1 or 0
+    }
+)
+```
+
+And drive conditional configuration from this flag
+
+```lua
+vim.o.cmdheight = vim.g.knob_compactcmd and 1 or 2
+```
+
+Then you can start up vim with this environment variable set to use this
+alternative configuration.
+
+```sh
+VIM_KNOBS_NOTES=1 nvim
+```
 
 ## vim with plug
 
@@ -91,4 +130,3 @@ if !exists("g:knob_fugitive")
    " Do something if knob is set
 endif
 ```
-

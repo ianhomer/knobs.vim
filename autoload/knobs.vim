@@ -20,8 +20,9 @@ if !exists('g:knobs_layers_map')
 endif
 
 " Default state of layers
-let g:knobs_layers = get(g:, "layers",{
+let g:knobs_layers = get(g:, "knobs_layers",{
   \   "mobile": $ANDROID_DATA == '/data' ? 1 : 0,
+  \   "notes": $VIM_KNOBS_NOTES == "1" ? 1 : 0,
   \   "debug": $VIM_KNOBS_DEBUG == "1" ? 1 : 0,
   \   "test": $VIM_KNOBS_TEST == "1" ? 1: 0
   \ })

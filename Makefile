@@ -31,10 +31,10 @@ test-lua:
 test-nvim: $(plenary)
 	nvim --headless --clean  -u ${minimal_init} -c "PlenaryBustedDirectory lua/tests/specs { minimal_init = '${minimal_init}' }"
 
-container: $(packer)
+container:
 	test/container.sh
 
-container-remote: $(packer)
+container-remote:
 	test/container.sh remote
 
 start: start-nvim 

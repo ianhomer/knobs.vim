@@ -12,7 +12,7 @@ require("packer").startup {
         use = ok and knobs.use(_use) or _use
         use "ianhomer/knobs.vim"
         use "wbthomason/packer.nvim"
-        if not hasKnobs then
+        if not ok then
           print("Knobs not loaded")
           return
         end
