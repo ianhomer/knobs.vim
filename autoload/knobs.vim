@@ -26,7 +26,7 @@ let g:knobs_layers = get(g:, "knobs_layers",{
   \   "mobile": $ANDROID_DATA == '/data' ? 1 : 0,
   \   "notes": $VIM_KNOBS_NOTES == "1" ? 1 : 0,
   \   "test": $VIM_KNOBS_TEST == "1" ? 1: 0,
-  \   "wezterm": $WEZTERM_CONFIG_DIR == "" ? 0: 1
+  \   "wezterm": $TERM_PROGRAM == "WezTerm" ? 1: 0
   \ })
 
 function! knobs#(knob)
