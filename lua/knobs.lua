@@ -4,18 +4,18 @@ local KNOB_VIM_AFTER_RE = "^[%w-]+/([%w-]+)-n?vim"
 local KNOB_RE = "^[%w-]+/([%w-]+)"
 
 function M.setup()
-    vim.cmd "call knobs#Init()"
+    vim.cmd("call knobs#Init()")
 end
 
 function M.refresh()
-    vim.cmd "call knobs#Refresh()"
+    vim.cmd("call knobs#Refresh()")
 end
 
 function M.has(knob)
     return (vim.g["knob_" .. knob] or 0) > 0
 end
 
-function size(table)
+local function size(table)
   local count = 0
   for _ in pairs(table) do count = count + 1 end
   return count
@@ -26,7 +26,7 @@ function M.count()
 end
 
 function M.fromPackage(package)
-    knob = package:match(KNOB_VIM_RE) or package:match(KNOB_VIM_AFTER_RE) or package:match(KNOB_RE)
+    local knob = package:match(KNOB_VIM_RE) or package:match(KNOB_VIM_AFTER_RE) or package:match(KNOB_RE)
     if (knob) then
         return knob:gsub("-", "_"):lower()
     else
@@ -39,7 +39,7 @@ function M.cond(args)
         args = {args}
     end
     local package = args[1]
-    knob = args.knob or M.fromPackage(package)
+    local knob = args.knob or M.fromPackage(package)
     if (knob) then
         local knobVariable = "knob_" .. knob
         if vim.g["knobs_levels"][knob] ~= nil then

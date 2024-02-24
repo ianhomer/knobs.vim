@@ -21,10 +21,12 @@ endif
 
 " Default state of layers
 let g:knobs_layers = get(g:, "knobs_layers",{
+  \   "debug": $VIM_KNOBS_DEBUG == "1" ? 1 : 0,
+  \   "kitty": $TERM == 'xterm-kitty' ? 1 : 0,
   \   "mobile": $ANDROID_DATA == '/data' ? 1 : 0,
   \   "notes": $VIM_KNOBS_NOTES == "1" ? 1 : 0,
-  \   "debug": $VIM_KNOBS_DEBUG == "1" ? 1 : 0,
-  \   "test": $VIM_KNOBS_TEST == "1" ? 1: 0
+  \   "test": $VIM_KNOBS_TEST == "1" ? 1: 0,
+  \   "wezterm": $WEZTERM_CONFIG_DIR == "" ? 0: 1
   \ })
 
 function! knobs#(knob)
