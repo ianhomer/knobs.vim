@@ -15,7 +15,9 @@ echo "Running tests with : $COMMAND"
 
 PLUGIN_DIR=~/.vim/vendor/plugins
 BUILD_DIR=`realpath $_DIR/../build`
-mkdir -p $BUILD_DIR
+if [[ ! -d "${BUILD_DIR}" ]] ; then
+  mkdir $BUILD_DIR
+fi
 
 # use local plugin directory if it exists, otherwise assume it's relative to
 # home.

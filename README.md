@@ -2,7 +2,9 @@
 
 Feature flags and conditional configurations. Vim with knobs.
 
-Why?
+For development/contribution guidelines, see [DEVELOPER.md](./DEVELOPER.md).
+
+## Why?
 
 - Different configurations for different environments or work contexts.
 - Toggle on and off experimental plugins or configuration.
