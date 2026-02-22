@@ -26,3 +26,20 @@ jobs:
           version: "stable"
       - name: test
         run: make test-nvim
+
+  test-all:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: leafo/gh-actions-lua@v8
+      - uses: leafo/gh-actions-luarocks@v4
+      - uses: rhysd/action-setup-vim@v1
+        id: vim
+        with:
+          neovim: true
+          version: "stable"
+      - name: Setup dependencies
+        run: |
+          luarocks install busted
+      - name: test
+        run: make test
