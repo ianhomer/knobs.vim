@@ -2,7 +2,7 @@
 
 Feature flags and conditional configurations. Vim with knobs.
 
-For development/contribution guidelines, see [DEVELOPER.md](./DEVELOPER.md).
+For development/contribution guidelines, see [DEVELOP.md](./DEVELOP.md).
 
 ## Why?
 
